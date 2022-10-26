@@ -5,7 +5,7 @@ import MealItem from "../components/MealItem";
 function MealsOverviewScreen({route}) {
     const catId = route.params.categoryId;
     const displayedMeals = MEALS.filter((mealItem)=>{
-        return mealItem.categoryId.indexOf(catId) >=0;
+        return mealItem.categoryIds.indexOf(catId) >=0;
     })
 
     function renderMealItem(itemData){
