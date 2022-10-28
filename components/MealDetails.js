@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet} from "react-native";
 
-function MealDetails({duration, complexity, affordability,}) {
+function MealDetails({duration, complexity, affordability, style}) {
     return (
         <View style={styles.info}>
-            <Text>duration: {duration} min.</Text>
-            <Text>{complexity}</Text>
-            <Text>€: {affordability}</Text>
+            <Text style={[styles.infoText, style]}>duration: {duration} min.</Text>
+            <Text style={[styles.infoText, style]}>{complexity}</Text>
+            <Text style={[styles.infoText, style]}>€: {affordability}</Text>
         </View>
     )
 }
@@ -17,5 +17,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 5,
+    },
+    infoText:{
+        marginHorizontal: 10
     }
 });
