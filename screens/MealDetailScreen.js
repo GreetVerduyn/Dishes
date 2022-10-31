@@ -1,3 +1,4 @@
+import React from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from "react-native";
 import IconButton from "../components/IconButton";
 import {useLayoutEffect} from "react";

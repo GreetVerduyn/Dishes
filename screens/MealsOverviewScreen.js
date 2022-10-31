@@ -1,3 +1,4 @@
+import React from 'react';
 import {FlatList, View, StyleSheet, Pressable} from "react-native";
 import {useLayoutEffect} from "react";
 

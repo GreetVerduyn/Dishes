@@ -1,14 +1,30 @@
+import React from 'react';
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import {createDrawerNavigator} from "@react-navigation/drawer";
 
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
+
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+    return <Drawer.Navigator
+        screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: {backgroundColor: '#3e3198'},
+            headerTintColor: '#f8f1db',
+            sceneContainerStyle: {backgroundColor: '#f8f1db'},
+        }}>
+        <Drawer.Screen name={"Categories"} component={CategoriesScreen} options={{ title:'All Categories'}}/>
+        <Drawer.Screen name={'Favorites'} component={FavoritesScreen}/>
+    </Drawer.Navigator>
+}
 
 
 export default function App() {
@@ -19,15 +35,16 @@ export default function App() {
                 <Stack.Navigator
                     screenOptions={{
                         headerTitleAlign: 'center',
-                        headerStyle: {backgroundColor: '#a0c3e5'},
-                        contentStyle: {backgroundColor: '#f8f1db'}
+                        headerStyle: {backgroundColor: '#3e3198'},
+                        headerTintColor: '#f8f1db',
+                        contentStyle: {backgroundColor: '#f8f1db'},
                     }}
                 >
                     <Stack.Screen
-                        name={'MealsCategories'}
-                        component={CategoriesScreen}
+                        name={'Drawer'}
+                        component={DrawerNavigator}
                         options={{
-                            title: 'Categories'
+                            headerShown: false,
                         }}
                     />
                     <Stack.Screen
@@ -37,6 +54,9 @@ export default function App() {
                     <Stack.Screen
                         name={'MealDetail'}
                         component={MealDetailScreen}
+                        options={{
+                            title:'Recipe'
+                        }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
@@ -44,11 +64,4 @@ export default function App() {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+
